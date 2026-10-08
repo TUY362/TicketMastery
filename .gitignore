@@ -1,0 +1,9 @@
+
+# Archivos generados por Java y NetBeans
+build/
+dist/
+nbproject/private/
+*.class
+
+# Registros de ejecución
+*.log
