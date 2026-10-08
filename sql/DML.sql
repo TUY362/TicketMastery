@@ -1,4 +1,4 @@
--- Manuel de Jesús Tavico Ramos | Carné: 2026272
+
 -- Proyecto 9: Taquilla TicketMastery | Fase 1
 -- COMMIT 3: DML (INSERT de datos de prueba). Ejecutar al final, una sola vez.
 USE ticketmastery_fase1;

@@ -1,12 +1,27 @@
--- Manuel de Jesús Tavico Ramos | Carné: 2026272
+
 -- Proyecto 9: Taquilla TicketMastery | Fase 1
--- COMMIT 1: DDL (estructura). Ejecutar primero en una base nueva.
--- Proyecto 9: Taquilla TicketMastery / Fase 1
--- MySQL 8.0.16 o superior. Ejecutar UNA VEZ en una instalación nueva.
--- No elimina ni sobrescribe bases existentes: CREATE DATABASE fallará si ya existe.
-CREATE DATABASE ticketmastery_fase1 CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
+-- COMMIT 1: DDL (estructura).
+-- MySQL 8.0.16 o superior.
+
+-- 1. Crear la base de datos solo si no existe para evitar que el script se detenga
+create database if not exists  ticketmastery_fase1; 
 USE ticketmastery_fase1;
 SET NAMES utf8mb4;
+
+-- 2. Desactivar temporalmente la revisión de llaves foráneas para poder eliminar/recrear limpiamente si fuera necesario
+SET FOREIGN_KEY_CHECKS = 0;
+
+DROP TABLE IF EXISTS Boleto;
+DROP TABLE IF EXISTS VentaTransaccion;
+DROP TABLE IF EXISTS Cliente;
+DROP TABLE IF EXISTS Asiento;
+DROP TABLE IF EXISTS ZonaLugar;
+DROP TABLE IF EXISTS Evento;
+DROP TABLE IF EXISTS Usuario;
+
+SET FOREIGN_KEY_CHECKS = 1;
+
+-- 3. Creación de Tablas
 
 CREATE TABLE Usuario (
  id_usuario INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -99,7 +114,6 @@ CREATE TABLE Boleto (
  fecha_emision DATETIME(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
  fecha_validacion DATETIME(6) NULL,
  id_validador INT UNSIGNED NULL,
- -- NULL no colisiona en un índice UNIQUE: permite reventa tras anulación.
  asiento_vigente INT UNSIGNED GENERATED ALWAYS AS
   (CASE WHEN estado <> 'ANULADO' THEN id_asiento ELSE NULL END) STORED,
  UNIQUE KEY uq_boleto_asiento_vigente (asiento_vigente),
