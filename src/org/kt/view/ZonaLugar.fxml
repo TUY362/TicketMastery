@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.kt.controller.ZonaLugarController"
+      spacing="16">
+
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+
+    <Label text="Administración de zonas"
+           style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #0f172a;"/>
+
+    <GridPane hgap="12" vgap="12">
+
+        <columnConstraints>
+            <ColumnConstraints minWidth="100"/>
+            <ColumnConstraints hgrow="ALWAYS" minWidth="180"/>
+        </columnConstraints>
+
+        <Label text="Evento:"
+               GridPane.columnIndex="0"
+               GridPane.rowIndex="0"/>
+
+        <ComboBox fx:id="cmbEvento"
+                  promptText="Selecciona un evento"
+                  maxWidth="Infinity"
+                  GridPane.columnIndex="1"
+                  GridPane.rowIndex="0"/>
+
+        <Label text="Nombre:"
+               GridPane.columnIndex="0"
+               GridPane.rowIndex="1"/>
+
+        <TextField fx:id="txtNombre"
+                   promptText="Por ejemplo: Preferencial"
+                   GridPane.columnIndex="1"
+                   GridPane.rowIndex="1"/>
+
+        <Label text="Precio (Q):"
+               GridPane.columnIndex="0"
+               GridPane.rowIndex="2"/>
+
+        <TextField fx:id="txtPrecio"
+                   promptText="Por ejemplo: 125.00"
+                   GridPane.columnIndex="1"
+                   GridPane.rowIndex="2"/>
+
+    </GridPane>
+
+    <FlowPane hgap="10" vgap="10">
+
+        <Button fx:id="btnGuardar"
+                text="Guardar"
+                onAction="#guardar"
+                style="-fx-background-color: #2563eb; -fx-text-fill: white;"/>
+
+        <Button fx:id="btnActualizar"
+                text="Actualizar"
+                onAction="#actualizar"
+                disable="true"/>
+
+        <Button fx:id="btnEliminar"
+                text="Eliminar"
+                onAction="#eliminar"
+                disable="true"
+                style="-fx-background-color: #b91c1c; -fx-text-fill: white;"/>
+
+        <Button fx:id="btnLimpiar"
+                text="Limpiar"
+                onAction="#limpiar"/>
+
+        <Button fx:id="btnRecargar"
+                text="Recargar"
+                onAction="#recargar"/>
+
+    </FlowPane>
+
+    <Label fx:id="lblMensaje"
+           text=""
+           wrapText="true"
+           style="-fx-text-fill: #b91c1c;"/>
+
+    <TableView fx:id="tablaZonas"
+               prefHeight="300"
+               VBox.vgrow="ALWAYS">
+
+        <placeholder>
+            <Label text="No hay zonas para mostrar."/>
+        </placeholder>
+
+        <columns>
+
+            <TableColumn fx:id="colId"
+                         text="ID"
+                         prefWidth="60"/>
+
+            <TableColumn fx:id="colEvento"
+                         text="Evento"
+                         prefWidth="240"/>
+
+            <TableColumn fx:id="colNombre"
+                         text="Zona"
+                         prefWidth="200"/>
+
+            <TableColumn fx:id="colPrecio"
+                         text="Precio (Q)"
+                         prefWidth="120"/>
+
+        </columns>
+
+    </TableView>
+
+</VBox>
