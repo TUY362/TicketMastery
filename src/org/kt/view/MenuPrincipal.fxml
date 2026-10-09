@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.kt.controller.MenuPrincipalController"
+            prefWidth="1000"
+            prefHeight="650"
+            style="-fx-background-color: #f1f5f9;">
+
+    <top>
+        <VBox spacing="6"
+              style="-fx-background-color: #0f172a;">
+
+            <padding>
+                <Insets top="20" right="25" bottom="20" left="25"/>
+            </padding>
+
+            <Label text="TicketMastery"
+                   style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+
+            <Label fx:id="lblUsuario"
+                   style="-fx-text-fill: #e2e8f0;"/>
+
+            <Label fx:id="lblRol"
+                   style="-fx-text-fill: #93c5fd;"/>
+
+        </VBox>
+    </top>
+
+    <left>
+        <VBox spacing="12"
+              prefWidth="220"
+              style="-fx-background-color: #e2e8f0;">
+
+            <padding>
+                <Insets top="20" right="15" bottom="20" left="15"/>
+            </padding>
+
+            <Label text="MENÚ PRINCIPAL"
+                   style="-fx-font-weight: bold; -fx-text-fill: #334155;"/>
+
+            <Button fx:id="btnEventos"
+                    text="Eventos"
+                    onAction="#abrirEventos"
+                    visible="false"
+                    managed="false"
+                    maxWidth="Infinity"
+                    prefHeight="40"/>
+
+            <Button fx:id="btnZonas"
+                    text="Zonas"
+                    onAction="#abrirZonas"
+                    visible="false"
+                    managed="false"
+                    maxWidth="Infinity"
+                    prefHeight="40"/>
+
+            <Button fx:id="btnAsientos"
+                    text="Asientos"
+                    onAction="#abrirAsientos"
+                    visible="false"
+                    managed="false"
+                    maxWidth="Infinity"
+                    prefHeight="40"/>
+
+            <Button fx:id="btnClientes"
+                    text="Clientes"
+                    onAction="#abrirClientes"
+                    visible="false"
+                    managed="false"
+                    maxWidth="Infinity"
+                    prefHeight="40"/>
+
+            <Button fx:id="btnVentas"
+                    text="Venta de boletos"
+                    onAction="#abrirVentas"
+                    visible="false"
+                    managed="false"
+                    maxWidth="Infinity"
+                    prefHeight="40"/>
+
+            <Button fx:id="btnValidacion"
+                    text="Validar boletos"
+                    onAction="#abrirValidacion"
+                    visible="false"
+                    managed="false"
+                    maxWidth="Infinity"
+                    prefHeight="40"/>
+
+            <Button text="Cerrar sesión"
+                    onAction="#cerrarSesion"
+                    maxWidth="Infinity"
+                    prefHeight="40"
+                    style="-fx-background-color: #b91c1c; -fx-text-fill: white;"/>
+
+        </VBox>
+    </left>
+
+    <center>
+        <StackPane fx:id="contenedorPrincipal">
+
+            <padding>
+                <Insets top="25" right="25" bottom="25" left="25"/>
+            </padding>
+
+            <VBox alignment="CENTER" spacing="12">
+
+                <Label text="Bienvenido a TicketMastery"
+                       style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #0f172a;"/>
+
+                <Label text="Selecciona una opción del menú para comenzar."
+                       wrapText="true"
+                       style="-fx-font-size: 15px; -fx-text-fill: #475569;"/>
+
+            </VBox>
+
+        </StackPane>
+    </center>
+
+</BorderPane>
