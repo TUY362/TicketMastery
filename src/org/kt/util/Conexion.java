@@ -13,6 +13,7 @@ public final class Conexion {
     private Connection conexion;
 
     private Conexion() {
+          ManejadorExcepciones.instalar();  
     }
 
     public static synchronized Conexion getInstancia() {
