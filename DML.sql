@@ -1,11 +1,7 @@
-
--- Proyecto 9: Taquilla TicketMastery | Fase 1
--- COMMIT 3: DML (INSERT de datos de prueba). Ejecutar al final, una sola vez.
 USE ticketmastery_fase1;
 SET NAMES utf8mb4;
 SET time_zone = '+00:00';
 START TRANSACTION;
--- Datos ficticios. Ejecutar una vez después de DDL.sql y Procedimientos_Vistas.sql.
 INSERT INTO Usuario(id_usuario,nombre,username,password_hash,rol) VALUES(1,'Ana Taquilla','taquilla1','pbkdf2_sha256$600000$1JWMGFGiJp1O4OzqT5l5eg==$OTJjKAqHQkOX2hY2m+zyDv2mCS5Ul4RZFOo8nkl79h4=','TAQUILLERO');
 INSERT INTO Usuario(id_usuario,nombre,username,password_hash,rol) VALUES(2,'Luis Taquilla','taquilla2','pbkdf2_sha256$600000$eoSnNDS+zutE72wYFbyMvw==$L6mEq++HQVGvRxaVDALF96T2LdiuEPiUGccQOT+mGDk=','TAQUILLERO');
 INSERT INTO Usuario(id_usuario,nombre,username,password_hash,rol) VALUES(3,'Marta Organiza','organizador1','pbkdf2_sha256$600000$POEpntwFIHgEVG3xlwW6AA==$2jm5RJpXWjL8yDErnqK7ebMQ0OrY8PklZVP5xI9uy/E=','ORGANIZADOR');
@@ -47,3 +43,19 @@ INSERT INTO Cliente(id_cliente,nombre,correo,telefono) VALUES(5,'Cliente Demo 5'
 INSERT INTO VentaTransaccion(id_venta,id_cliente,id_taquillero,fecha_creacion,estado,referencia_pago,fecha_pago) VALUES(5,5,1,UTC_TIMESTAMP(6),'PAGADA','DEMO-PAGO-005',UTC_TIMESTAMP(6));
 INSERT INTO Boleto(id_boleto,id_venta,id_asiento,codigo,precio_pagado,fecha_emision) VALUES(5,5,9,'00000000000000000000000000000005',225.00,UTC_TIMESTAMP(6));
 COMMIT;
+
+SELECT 'Evento' AS tabla, COUNT(*) AS registros FROM Evento
+UNION ALL
+SELECT 'ZonaLugar' AS tabla, COUNT(*) AS registros FROM ZonaLugar
+UNION ALL
+SELECT 'Asiento' AS tabla, COUNT(*) AS registros FROM Asiento
+UNION ALL
+SELECT 'Cliente' AS tabla, COUNT(*) AS registros FROM Cliente
+UNION ALL
+SELECT 'Usuario' AS tabla, COUNT(*) AS registros FROM Usuario
+UNION ALL
+SELECT 'VentaTransaccion' AS tabla, COUNT(*) AS registros FROM VentaTransaccion
+UNION ALL
+SELECT 'Boleto' AS tabla, COUNT(*) AS registros FROM Boleto;
+
+CALL sp_listar_boleto();
