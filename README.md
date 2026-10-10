@@ -130,3 +130,5 @@ Verificar este comando en el equipo de entrega antes de publicar la versión fin
 - Ejecución del JAR fuera de NetBeans.
 
 Las pruebas deben realizarse sobre la instalación de entrega. Esta lista no constituye evidencia de que hayan sido ejecutadas.
+
+Link del video:https://youtu.be/Jdsltr5_hr8
